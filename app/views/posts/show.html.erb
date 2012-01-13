@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<div class="posts">
+<h1>
+  <%= @post.title %>
+</h1>
+
+<p>
+  
+  <%= @post.body %>
+  
+</p>
+<%= link_to 'Edit', edit_user_post_path(@user, @post) %> |
+<%= link_to 'Destroy', [@user, @post], confirm: 'Are you sure?', method: :delete %> |
+<%= link_to 'Back', user_posts_path(@user) %>
+
+<hr>
+</div>
+<div class="comments">
+<% if @comments.empty? %>
+  <p>There's no comments yet</p>
+<% else %>
+  <% @post.comments.each do |comment| %>  <div> 
+    <h3><%= comment.title %></h3><b>by</b>
+    <%= User.find(comment.user_id).email %>
+  </div> 
+<% end %>   
+<% end %> 
+</div> 
+   
+<h3>Add a comment:</h3>
+<%= form_for([@user, @post, @post.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ 
+<br />
+

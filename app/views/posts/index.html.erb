@@ -1,0 +1,19 @@
+<% @posts.each do |post| %>
+<div class="post_header">
+  <p>
+    <h1><%= link_to post.title, [@user, post] %></h1>
+    (posted <%= time_ago_in_words post.created_at %> ago)
+  </p>
+</div>
+<% end %>
+
+
+<br />
+<% if session[:user_id] == @posts.first.user_id %>>
+<%= link_to 'New Post', new_user_post_path( session[:user_id] ) %>
+<% end %>
+
+
+
+
+<%= link_to 'Back', users_path %>
