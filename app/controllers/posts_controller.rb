@@ -6,9 +6,10 @@ class PostsController < ApplicationController
   before_filter :check_auth, :only => [:edit, :update, :destroy]
   def check_auth
     if session[:user_id] != @post.user_id
-      flash[:notice] = "Sorry, you can't edit this tweet"
+      flash[:notice] = "Sorry, you can't edit this post"
       redirect_to user_posts_path(params[:user_id])
-    end
+      
+   end
   end
   def get_user
     @user = User.find(params[:user_id])
