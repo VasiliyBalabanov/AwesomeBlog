@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="posts">
 <h1>
   <%= @post.title %>
@@ -19,11 +18,13 @@
 <% if @comments.empty? %>
   <p>There's no comments yet</p>
 <% else %>
+<h2>Comments:</h2>
   <% @post.comments.each do |comment| %>  <div> 
     <h3><%= comment.title %></h3><b>by</b>
     <%= User.find(comment.user_id).email %>
   </div> 
-<% end %>   
+  <hr>
+<% end %>
 <% end %> 
 </div> 
    

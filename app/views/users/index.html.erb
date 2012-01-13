@@ -1,17 +1,15 @@
-<h1>This is the list of users</h1>
+<h2>This is the list of users</h2>
 
-<table>
+<table width=60%>
   <tr>
     <th>Email</th>
     <th>Number of posts</th>
-    <th></th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.email %></td>
-    <td><%= user.posts.count %></td>
-    <td><%= link_to 'Show', user_posts_path(user.id) %></td>
+    <td align=center><%= link_to user.email, user_posts_path(user.id) %></td>
+    <td align=center><%= user.posts.count %></td>
   </tr>
 <% end %>
-</table>
+</table> 

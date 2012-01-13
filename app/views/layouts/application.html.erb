@@ -10,7 +10,9 @@
 <table width=96%>
   <tr>
     
-<td colspan=2><center><h1>Super Awesome Blog v0.2</h1></center></td>
+<td colspan=2><center><h1>Super Awesome Blog v0.2</h1>
+  <h3>In black&white.</h3>
+</center></td>
 </tr>
 <tr>
   <td align="center" width=15%>
@@ -29,6 +31,7 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end %>
+
 
 <%= yield %>
 </td>
