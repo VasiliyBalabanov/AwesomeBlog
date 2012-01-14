@@ -1,21 +1,15 @@
 <h2>This is the list of users</h2>
 
-<table width=60%>
-  <tr>
-    <th>Email</th>
-    <th>Number of posts</th>
-    <th />
-  </tr>
-
 <% @users.each do |user| %>
-  <tr>
-    <td align=center><%= link_to user.email, user_posts_path(user.id) %></td>
-    <td align=center><%= user.posts.count %></td>
+ <%= div_for user do %>
+    <%= link_to user.email, user_posts_path(user.id) %>
+    <%= pluralize(user.posts.count, "post") %>
     <% if session[:user_id] %>
-      <% if User.find(session[:user_id]).is_admin? %>
-        <td align=center><%= link_to "Destroy", user, confirm: 'Are you sure?', method: :delete if user.id > 1 %></td>
-      <% end %>
+     
+        <% if User.find(session[:user_id]).is_admin? %>
+          <%= link_to "Destroy", user, confirm: 'Are you sure?', method: :delete, remote: true if user.id > 1 %>
+        <% end %>
+      
     <% end %>
-  </tr>
+  <% end %>
 <% end %>
-</table> 

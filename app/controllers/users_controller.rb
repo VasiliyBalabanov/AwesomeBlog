@@ -27,6 +27,7 @@ def destroy
   
   respond_to do |format|
       format.html { redirect_to users_url }
+      format.js
     end
 end
 end
