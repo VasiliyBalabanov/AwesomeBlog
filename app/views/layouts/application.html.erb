@@ -10,15 +10,17 @@
 <table width=96%>
   <tr>
     
-<td colspan=2><center><h1>AwesomeBlog v0.2.2</h1>
+<td colspan=2><center><img src=/logo.png />
   <h3>In black&white.</h3>
 </center></td>
 </tr>
 <tr>
-  <td align="center" width=15%>
-<div id="user_nav">
+  <td valign="top" width=15%>
+    <div id="user_nav">
+       <a href="/">Main Page</a>
+      <br>
   <% if current_user %>
-    Logged in as <%= current_user.email %>.
+  Logged in as <%= current_user.email %><br>
     <%= link_to "Log out", log_out_path %>
   <% else %>
     You still need to <%= link_to "log in", log_in_path %> or <%= link_to "sign up", sign_up_path %> to post something.
