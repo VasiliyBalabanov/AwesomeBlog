@@ -4,20 +4,24 @@ class PostsController < ApplicationController
   before_filter :get_user
   before_filter :get_post, :only => [:edit, :update, :destroy]
   before_filter :check_auth, :only => [:edit, :update, :destroy]
-  def check_auth
+
+def check_auth
     if session[:user_id] != @post.user_id
       flash[:notice] = "Sorry, you can't edit this post"
       redirect_to user_posts_path(params[:user_id])
       
    end
   end
-  def get_user
+
+def get_user
     @user = User.find(params[:user_id])
   end
-  def get_post
+
+def get_post
     @post = Post.find(params[:id])
   end
- def index
+
+def index
     @posts = @user.posts.recent.all
 
     respond_to do |format|
@@ -32,7 +36,6 @@ class PostsController < ApplicationController
     @comments = @post.comments.all
     respond_to do |format|
       format.html # show.html.erb
-      
     end
   end
 
