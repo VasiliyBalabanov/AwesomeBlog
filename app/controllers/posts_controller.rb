@@ -3,10 +3,19 @@ class PostsController < ApplicationController
   # GET /posts.json
   before_filter :get_user
   before_filter :get_post, :only => [:edit, :update, :destroy]
-  before_filter :check_auth, :only => [:edit, :update, :destroy]
-
+  before_filter :check_auth, :only => [:edit, :update]
+  before_filter :check_admin_auth, :only => :destroy
+  
 def check_auth
-    if session[:user_id] != @post.user_id
+  if session[:user_id] != @post.user_id
+      flash[:notice] = "Sorry, you can't edit this post"
+      redirect_to [@user, @post]
+      
+   end
+end
+
+  def check_admin_auth
+    if session[:user_id] != @post.user_id && session[:user_id] > 1
       flash[:notice] = "Sorry, you can't edit this post"
       redirect_to [@user, @post]
       
@@ -73,6 +82,7 @@ def index
 
   # PUT /posts/1
   # PUT /posts/1.json
+  
   def update
     @post = @user.posts.find(params[:id])
 

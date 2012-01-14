@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   after_save :welcome_mail
   
-  validates :password, :confirmation => true, :presence => true
-  validates :email, :presence => true, :uniqueness => true, :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
+  validates :password, :confirmation => true, :presence => true, :length => {:minimum => 3}
+  validates :email, :presence => true, :uniqueness => true, :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}, :length => {:minimum => 6}
   
   def self.authenticate(email, password)
     user = find_by_email(email)
