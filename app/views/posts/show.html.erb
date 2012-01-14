@@ -19,23 +19,27 @@
   <p>There's no comments yet</p>
 <% else %>
 <h2>Comments:</h2>
-  <% @post.comments.each do |comment| %>  <div> 
-    <h3><%= comment.title %></h3><b>by</b>
-    <%= User.find(comment.user_id).email %>
+  <% @post.comments.each do |comment| %>  <div class="title">
+    <h3><%= comment.title %></h3>
   </div> 
+  <div class="body">
+  <p><%= comment.body %></p>
+  <p><b>by</b>
+    <%= User.find(comment.user_id).email %> (<%= time_ago_in_words comment.created_at %>)
+  </p>
+  </div>
   <hr>
 <% end %>
 <% end %> 
 </div> 
    
-<h3>Add a comment:</h3>
+<h3 class="add">Add a comment:</h3>
 <%= form_for([@user, @post, @post.comments.build]) do |f| %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
+  <div class="field">
     <%= f.text_area :body %>
   </div>
   <div class="actions">

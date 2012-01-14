@@ -5,3 +5,14 @@
  *= require_self
  *= require_tree . 
 */
+textarea {
+  width:80%;
+  border:outset #000 2px;
+}
+input {
+  width:40%;
+  border:outset #000 2px;
+}
+h3.add {
+  margin-left:35%;
+}

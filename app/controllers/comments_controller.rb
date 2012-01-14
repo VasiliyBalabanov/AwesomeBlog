@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(params[:comment])
     @comment.user_id = session[:user_id]
-    @comment.save
-    redirect_to user_posts_path(@user)
+    if !@comment.save
+      flash[:notice] = "Sorry, your comments need the body."
+    end
+    redirect_to user_post_path(params[:user_id], params[:post_id])
   end
 end
