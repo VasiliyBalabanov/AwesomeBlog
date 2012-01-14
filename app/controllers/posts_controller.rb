@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 def check_auth
     if session[:user_id] != @post.user_id
       flash[:notice] = "Sorry, you can't edit this post"
-      redirect_to user_posts_path(params[:user_id])
+      redirect_to [@user, @post]
       
    end
   end

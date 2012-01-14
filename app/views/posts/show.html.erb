@@ -21,7 +21,7 @@
 <h2>Comments:</h2>    <%= render @comments %>
 <% end %> 
 </div> 
-   
+<% if session[:user_id] %>   
 <h3 class="add">Add a comment:</h3>
 <%= form_for([@user, @post, @post.comments.build]) do |f| %>
   <div class="field">
@@ -34,4 +34,4 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+<% end %><% end %>
