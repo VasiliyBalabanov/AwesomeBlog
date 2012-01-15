@@ -1,5 +1,5 @@
 $("#comments").append("<%= escape_javascript(render(:partial => @comment)) %>");
-$('div#<%= dom_id(@comment) %>').effect('highlight', {}, 4000);
+$('div#<%= dom_id(@comment) %>').effect('highlight', {}, 3000);
 $("#comments_count").replaceWith(function() {
   return "<div id='comments_count'><h3><%= pluralize(@count, 'Comment') %></h3></div>";
 });
