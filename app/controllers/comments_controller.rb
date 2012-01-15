@@ -9,11 +9,12 @@ class CommentsController < ApplicationController
     @comment.user_id = session[:user_id]
     if !@comment.save
       flash[:notice] = "Sorry, your comments need the body."
+    else
+      @count = @post.comments.count
     end
     respond_to do |format|
-      format.html { redirect_to user_post_path(params[:user_id], params[:post_id]) }
+      format.html {redirect_to user_post_path(params[:user_id], params[:post_id])}
       format.js
     end
-    #redirect_to user_post_path(params[:user_id], params[:post_id])
   end
 end

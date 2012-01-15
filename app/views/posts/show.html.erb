@@ -16,17 +16,21 @@
 </div>
 <div id="comments">
 <% if @comments.empty? %>
-  <p>There's no comments yet</p>
+<div id="comments_count">
+<h3>There's no comments yet</h3>
+</div>
 <% else %>
-<h2>Comments:</h2>    <%= render @comments %>
+<div id="comments_count">
+<h3><%= pluralize(@comments.count, 'Comment') %></h3>
+</div>    <%= render @comments %>
+
 <% end %> 
 </div> 
 
 
-
 <% if session[:user_id] %>   
 <h3 class="add">Add a comment:</h3>
-<%= form_for([@user, @post, @post.comments.build], remote: true) do |f| %>
+<%= form_for([@user, @post, @post.comments.build], :remote => true) do |f| %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
