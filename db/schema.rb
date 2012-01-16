@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120116183246) do
+=======
+ActiveRecord::Schema.define(:version => 20120114174651) do
+>>>>>>> 0e7e9d804de55d64f3b468ccf61a3ae174fb9b45
 
   create_table "comments", :force => true do |t|
     t.string   "title"
@@ -37,7 +41,12 @@ ActiveRecord::Schema.define(:version => 20120116183246) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
+<<<<<<< HEAD
     t.string   "password_digest"
+=======
+    t.string   "password_hash"
+    t.string   "password_salt"
+>>>>>>> 0e7e9d804de55d64f3b468ccf61a3ae174fb9b45
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin"

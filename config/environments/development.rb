@@ -1,4 +1,5 @@
 Blog::Application.configure do
+<<<<<<< HEAD
   config.action_mailer.default_url_options = { host: "localhost:3000"}
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -11,6 +12,8 @@ Blog::Application.configure do
     user_name: "hellofrompiter@gmail.com",
     password: "AcMilan1899"
   }
+=======
+>>>>>>> 0e7e9d804de55d64f3b468ccf61a3ae174fb9b45
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
