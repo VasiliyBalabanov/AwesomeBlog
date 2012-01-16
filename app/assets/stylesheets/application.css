@@ -1,0 +1,35 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+textarea {
+  width:80%;
+  height:250px;
+  border:outset #000 2px;
+}
+input {
+  width:40%;
+  border:outset #000 2px;
+}
+h3.add {
+  margin-left:35%;
+}
+
+#user_nav {
+  text-align:center;
+  margin-top:200px;
+}
+
+div.user {
+  width:350px;
+  height:40px;
+  margin-top:2px;
+  border:dotted 2px #000;
+  text-align:center;
+}
+p.aligning {
+  margin-top:10px;
+}
