@@ -1,7 +1,8 @@
-<h2>This is the list of users</h2>
-
+<h2>Blogs:</h2>
+<div id="users">
 <% @users.each do |user| %>
  <%= div_for user do %>
+    <p class="aligning">
     <%= link_to user.email, user_posts_path(user.id) %>
     <%= pluralize(user.posts.count, "post") %>
     <% if session[:user_id] %>
@@ -11,5 +12,7 @@
         <% end %>
       
     <% end %>
+    </p>
   <% end %>
 <% end %>
+</div>

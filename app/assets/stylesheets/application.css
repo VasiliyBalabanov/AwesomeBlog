@@ -22,3 +22,14 @@ h3.add {
   text-align:center;
   margin-top:200px;
 }
+
+div.user {
+  width:350px;
+  height:40px;
+  margin-top:2px;
+  border:dotted 2px #000;
+  text-align:center;
+}
+p.aligning {
+  margin-top:10px;
+}
