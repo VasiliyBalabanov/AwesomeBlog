@@ -1,7 +1,7 @@
 <% @posts.each do |post| %>
 <div class="post_header">
   <p>
-    <h1><%= link_to post.title, [@user, post] %></h1>
+    <h1><%= link_to post.title, [@show_user, post] %></h1>
     (posted <%= time_ago_in_words post.created_at %> ago)
   </p>
 </div>
@@ -9,8 +9,8 @@
 
 
 <br />
-<% if session[:user_id] == @posts.first.user_id %>>
-<%= link_to 'New Post', new_user_post_path( session[:user_id] ) %>
+<% if @user.id == @posts.first.user_id %>>
+<%= link_to 'New Post', new_user_post_path( @user.id ) %>
 <% end %>
 
 

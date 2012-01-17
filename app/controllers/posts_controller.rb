@@ -2,12 +2,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   before_filter :get_user
+  before_filter :get_show_user, :only => [:index, :show, :edit, :destroy]
   before_filter :get_post, :only => [:edit, :update, :destroy]
   before_filter :check_auth, :only => [:edit, :update]
   before_filter :check_admin_auth, :only => :destroy
   
+  
 def check_auth
-  if session[:user_id] != @post.user_id
+#  user_id_by_cookie
+  if @user.id != @post.user_id
       flash[:notice] = "Sorry, you can't edit this post"
       redirect_to [@user, @post]
       
@@ -15,33 +18,38 @@ def check_auth
 end
 
   def check_admin_auth
-    if session[:user_id] != @post.user_id && session[:user_id] > 1
+   # user_id_by_cookie
+    if @user.id != @post.user_id && @user.id > 1
       flash[:notice] = "Sorry, you can't edit this post"
       redirect_to [@user, @post]
       
    end
   end
 
-def get_user
-    @user = User.find(params[:user_id])
+  def get_user
+    @user = User.find_by_auth_token(cookies[:auth_token])
   end
 
-def get_post
+  def get_post
     @post = Post.find(params[:id])
   end
+  
+  def get_show_user
+    @show_user = User.find(params[:user_id])
+  end
 
-def index
-    @posts = @user.posts.recent.all
+  def index
+    @posts = @show_user.posts.recent.all
 
     respond_to do |format|
       format.html # index.html.erb
     end
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
+  
   def show
-    @post = @user.posts.find(params[:id])
+    @show_user = User.find(params[:user_id])
+    @post = @show_user.posts.find(params[:id])
     @comments = @post.comments.all
     respond_to do |format|
       format.html # show.html.erb
@@ -49,8 +57,7 @@ def index
     end
   end
 
-  # GET /posts/new
-  # GET /posts/new.json
+  
   def new
     @post = Post.new
 
@@ -60,13 +67,13 @@ def index
     end
   end
 
-  # GET /posts/1/edit
+
   def edit
-    @post = @user.posts.find(params[:id])
+  
+    @post = @show_user.posts.find(params[:id])
   end
 
-  # POST /posts
-  # POST /posts.json
+ 
   def create
     @post = @user.posts.new(params[:post])
 
@@ -81,9 +88,7 @@ def index
     end
   end
 
-  # PUT /posts/1
-  # PUT /posts/1.json
-  
+
   def update
     @post = @user.posts.find(params[:id])
 
@@ -98,10 +103,10 @@ def index
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
+
   def destroy
-    @post = @user.posts.find(params[:id])
+   
+    @post = @show_user.posts.find(params[:id])
     @post.destroy
 
     respond_to do |format|

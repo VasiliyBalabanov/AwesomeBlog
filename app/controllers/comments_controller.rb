@@ -4,9 +4,8 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @user
     @comment = @post.comments.create(params[:comment])
-    @comment.user_id = session[:user_id]
+    @comment.user_id = User.find_by_auth_token(cookies[:auth_token]).id
     if !@comment.save
       flash[:notice] = "Sorry, your comments need the body."
     else

@@ -6,6 +6,12 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.welcome.subject
   #
+  
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => "Password Reset"
+  end
+  
   def welcome(user)
     @user = user
     @greeting = "Hi"

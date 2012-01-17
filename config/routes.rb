@@ -1,5 +1,5 @@
 Blog::Application.routes.draw do
-  get "comment/new"
+
 
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
@@ -11,6 +11,7 @@ Blog::Application.routes.draw do
     end
   end
   resources :sessions
+  resources :password_resets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

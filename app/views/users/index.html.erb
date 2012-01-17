@@ -5,9 +5,9 @@
     <p class="aligning">
     <%= link_to user.email, user_posts_path(user.id) %>
     <%= pluralize(user.posts.count, "post") %>
-    <% if session[:user_id] %>
+    <% if cookies[:auth_token] %>
      
-        <% if User.find(session[:user_id]).is_admin? %>
+        <% if User.find_by_auth_token(cookies[:auth_token]).is_admin? %>
           <%= link_to "Destroy", user, confirm: 'Are you sure?', method: :delete, remote: true if user.id > 1 %>
         <% end %>
       

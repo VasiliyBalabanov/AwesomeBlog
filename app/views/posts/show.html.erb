@@ -8,9 +8,9 @@
   <%= @post.body %>
   
 </p>
-<%= link_to 'Edit', edit_user_post_path(@user, @post) %> |
-<%= link_to 'Destroy', [@user, @post], confirm: 'Are you sure?', method: :delete %> |
-<%= link_to 'Back', user_posts_path(@user) %>
+<%= link_to 'Edit', edit_user_post_path(@show_user, @post) %> |
+<%= link_to 'Destroy', [@show_user, @post], confirm: 'Are you sure?', method: :delete %> |
+<%= link_to 'Back', user_posts_path(@show_user) %>
 
 <hr>
 </div>
@@ -28,9 +28,9 @@
 </div> 
 
 
-<% if session[:user_id] %>   
+<% if cookies[:auth_token] %>   
 <h3 class="add">Add a comment:</h3>
-<%= form_for([@user, @post, @post.comments.build], :remote => true) do |f| %>
+<%= form_for([@show_user, @post, @post.comments.build], :remote => true) do |f| %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
