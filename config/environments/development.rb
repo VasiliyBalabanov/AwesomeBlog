@@ -11,6 +11,12 @@ Blog::Application.configure do
     user_name: "hellofrompiter@gmail.com",
     password: "AcMilan1899"
   }
+  
+  config.middleware.use ExceptionNotifier,
+  :email_prefix => "[500] ",
+  :sender_address => %{"notifier" <hellofrompiter@gmail.com>},
+  :exception_recipients => %w{hellofrompiter@gmail.com}
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
