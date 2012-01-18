@@ -23,5 +23,5 @@ jQuery.fn.submitWithAjax = function() {
 };
 
 $(document).ready(function() {
-  $("#new_review").submitWithAjax();
+  $("#new_comment").submitWithAjax();
 })

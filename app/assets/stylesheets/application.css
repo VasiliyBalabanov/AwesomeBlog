@@ -10,10 +10,14 @@ textarea {
   height:250px;
   border:outset #000 2px;
 }
+
+@import url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/cupertino/jquery-ui.css);
+
 input {
   width:40%;
   border:outset #000 2px;
 }
+
 input#remember_me
 {
   width:15px;
