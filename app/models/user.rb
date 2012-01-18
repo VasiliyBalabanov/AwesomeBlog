@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
   before_update { generate_token(:auth_token) }
   after_create :welcome_mail
-  after_save :admin
+  before_save :admin
   
   validates :password, :presence => true, :length => {:minimum => 3}, :on => :create
   validates :email, :presence => true, :uniqueness => true, :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}, :length => {:minimum => 6}
@@ -30,7 +30,6 @@ class User < ActiveRecord::Base
   def admin
     if self.id == 1
       self.is_admin = true
-      self.save
     end
   end
   
