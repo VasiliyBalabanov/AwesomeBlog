@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   before_filter :get_user
-  before_filter :get_show_user, :only => [:index, :show, :edit, :destroy]
+  before_filter :get_show_user
   before_filter :get_post, :only => [:edit, :update, :destroy]
   before_filter :check_auth, :only => [:edit, :update]
   before_filter :check_admin_auth, :only => :destroy
@@ -12,7 +12,7 @@ def check_auth
 #  user_id_by_cookie
   if @user.id != @post.user_id
       flash[:notice] = "Sorry, you can't edit this post"
-      redirect_to [@user, @post]
+      redirect_to [@show_user, @post]
       
    end
 end
@@ -21,7 +21,7 @@ end
    # user_id_by_cookie
     if @user.id != @post.user_id && @user.id > 1
       flash[:notice] = "Sorry, you can't edit this post"
-      redirect_to [@user, @post]
+      redirect_to [@show_user, @post]
       
    end
   end
