@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   def admin
     if self.id == 1
       self.is_admin = true
+      save!
     end
   end
   
