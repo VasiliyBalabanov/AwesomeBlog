@@ -3,22 +3,24 @@ class PostsController < ApplicationController
   before_filter :check_auth, :only => [:edit, :update]
   before_filter :check_admin_auth, :only => :destroy
   
+  def mercury_update
+    @post.title = params[:content][:post_title][:value]
+    @post.body = params[:content][:post_body][:value]
+    @post.save!
+   render text: ""
+  end
   
-def check_auth
-
-  if @user && @user.id != @post.user_id
-      flash[:notice] = "Sorry, you can't edit this post"
-      redirect_to [@show_user, @post]
-      
-   end
-end
+  def check_auth
+    if @user && @user.id != @post.user_id
+        flash[:notice] = "Sorry, you can't edit this post"
+        redirect_to [@show_user, @post]    
+     end
+  end
 
   def check_admin_auth
-
     if @user.id != @post.user_id && !(@user.is_admin?)
       flash[:notice] = "Sorry, you can't edit this post"
-      redirect_to [@show_user, @post]
-      
+      redirect_to [@show_user, @post] 
    end
   end
 
@@ -29,17 +31,13 @@ end
       @post = Post.find(params[:id])
     end
   end
-
   
   def index
     @posts = @show_user.posts.recent.all
-
     respond_to do |format|
       format.html # index.html.erb
     end
   end
-
-
   
   def show
     @show_user = User.find(params[:user_id])
@@ -51,22 +49,20 @@ end
     end
   end
 
-  
   def new
     @post = Post.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      
-    end
+    @post.user_id = @user.id
+    @post.save!
+    
+    redirect_to "/editor" + user_post_path(@show_user, @post)
+    #respond_to do |format|
+    #  format.html # new.html.erb  
+    #end
   end
-
 
   def edit
-  
     @post = @show_user.posts.find(params[:id])
   end
-
  
   def create
     @post = @user.posts.new(params[:post])
@@ -74,14 +70,11 @@ end
     respond_to do |format|
       if @post.save
         format.html { redirect_to [@user, @post], notice: 'Post was successfully created.' }
-       
       else
         format.html { render action: "new" }
-       
       end
     end
   end
-
 
   def update
     @post = @user.posts.find(params[:id])
@@ -96,7 +89,6 @@ end
       end
     end
   end
-
 
   def destroy
    

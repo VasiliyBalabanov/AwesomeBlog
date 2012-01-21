@@ -1,36 +1,38 @@
 <div class="posts">
 <h1>
-  <%= @post.title %>
+  <span id="post_title" class="mercury-region" data-type="editable">
+    <%= raw @post.title %>
+  </span>
 </h1>
 
-<p>
-  
-  <%= @post.body %>
-  
-</p>
+<div id="post_body" class="mercury-region" data-type="editable">
+    <%= raw @post.body %>
+</div>
+<div id="links">
 <% if @user %>
-  <%= link_to 'Edit', edit_user_post_path(@show_user, @post) %> |
+  <%= link_to 'Edit', "/editor" + request.path, id: "edit_link", data: {save_url: mercury_update_user_post_path(@show_user, @post)} %> |
   <%= link_to 'Destroy', [@show_user, @post], confirm: 'Are you sure?', method: :delete %> |
 <% end %>
 <%= link_to 'Back', user_posts_path(@show_user) %>
-
+</div>
 <hr>
 </div>
 <div id="comments">
 <% if @comments.empty? %>
-<div id="comments_count">
-<h3>There's no comments yet</h3>
-</div>
+  <div id="comments_count">
+    <h3>There's no comments yet</h3>
+  </div>
 <% else %>
-<div id="comments_count">
-<h3><%= pluralize(@comments.count, 'Comment') %></h3>
-</div>    <%= render @comments %>
+  <div id="comments_count">
+    <h3><%= pluralize(@comments.count, 'Comment') %></h3>
+  </div>    <%= render @comments %>
 
 <% end %> 
 </div> 
 
 
-<% if cookies[:auth_token] %>   
+<% if cookies[:auth_token] %>
+<div id="add_comments">
 <h3 class="add">Add a comment:</h3>
 <%= form_for([@show_user, @post, @post.comments.build], :remote => true) do |f| %>
   <div class="field">
@@ -43,4 +45,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %><% end %>
+<% end %>
+</div><% end %>

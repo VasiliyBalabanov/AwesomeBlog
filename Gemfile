@@ -19,6 +19,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'mercury-rails', git: 'git://github.com/jejacks0n/mercury.git'
+gem 'paperclip', :path => File.join(File.dirname(__FILE__), '/vendor/gem/paperclip')
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,3 +1,21 @@
+GIT
+  remote: git://github.com/jejacks0n/mercury.git
+  revision: 2e18bdda938067f892ff92670fb637451327a4a5
+  specs:
+    mercury-rails (0.2.3)
+      coffee-script
+      paperclip
+      rails (~> 3.1.0)
+
+PATH
+  remote: vendor/gem/paperclip
+  specs:
+    paperclip (2.5.0)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -34,6 +52,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.0)
+    cocaine (0.2.1)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -121,7 +140,9 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   exception_notification
   jquery-rails
+  mercury-rails!
   mysql2
+  paperclip!
   rails (= 3.1.1)
   sass-rails (~> 3.1.4)
   sqlite3
