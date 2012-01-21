@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       @user.posts.create(title: "Welcome", body: "Start writing right now!")
-      redirect_to users_url, :notice => "Signed up!"
+      redirect_to root_url, :notice => "Signed up!"
     else
       render "new"
     end
