@@ -1,0 +1,3 @@
+#!/bin/sh
+cd current
+rake db:migrate RAILS_ENV=production
