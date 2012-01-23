@@ -1,4 +1,4 @@
 www:
   type: ruby
 data:
-  type: sqlite3
+  type: postgresql

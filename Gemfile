@@ -6,7 +6,8 @@ gem 'rails', '3.1.1'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3', :group => :development
-gem 'mysql2', :group => :production
+#gem 'mysql2', :group => :production
+gem 'pg', :group => :production
 
 gem 'exception_notification'
 
