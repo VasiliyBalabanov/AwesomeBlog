@@ -9,7 +9,7 @@
 
 
 <br />
-<% if @user %>
+<% if @user && @posts %>
  <% if @user.id == @posts.first.user_id %>>
    <%= link_to 'New Post', new_user_post_path( @user.id ) %>
  <% end %>
