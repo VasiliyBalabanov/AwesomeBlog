@@ -8,6 +8,7 @@ gem 'rails', '3.1.1'
 gem 'sqlite3', :group => :development
 #gem 'mysql2', :group => :production
 gem 'pg', :group => :production
+gem 'therubyracer', :group => :production
 
 gem 'exception_notification'
 
