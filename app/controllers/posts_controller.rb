@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = @show_user.posts.recent.all
+    @posts = @show_user.posts.all
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -62,6 +62,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = @show_user.posts.find(params[:id])
+    redirect_to "/editor" + user_post_path(@show_user, @post)
   end
  
   def create
