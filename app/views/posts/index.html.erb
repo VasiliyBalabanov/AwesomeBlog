@@ -1,11 +1,8 @@
-<% @posts.each do |post| %>
-<div class="post_header">
-  <p>
-    <h1><%= link_to post.title, [@show_user, post] %></h1>
-    (posted <%= time_ago_in_words post.created_at %> ago)
-  </p>
+<%= will_paginate @posts %>
+
+<div id="posts">
+  <%= render @posts %>
 </div>
-<% end %>
 
 
 <br />

@@ -33,10 +33,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = @show_user.posts.all
-    respond_to do |format|
-      format.html # index.html.erb
-    end
+    @posts = @show_user.posts.order("created_at desc").page(params[:page]).per_page(10)
   end
   
   def show

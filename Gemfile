@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 gem 'mercury-rails', git: 'git://github.com/jejacks0n/mercury.git'
 gem 'paperclip', :path => File.join(File.dirname(__FILE__), '/vendor/gem/paperclip')
+gem 'will_paginate', '> 3.0.0'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
