@@ -1,6 +1,6 @@
-<%# for post in @posts do %>
+<% if !(post.is_private?) %>
 <div class="post">
     <h1><%= link_to post.title, [@show_user, post] %></h1>
     (posted <%= time_ago_in_words post.created_at %> ago)
 </div>
-<%# end %>
+<% end %>

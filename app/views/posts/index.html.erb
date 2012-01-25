@@ -1,9 +1,8 @@
-<%= will_paginate @posts %>
-
 <div id="posts">
   <%= render @posts %>
 </div>
 
+<%= will_paginate @posts %>
 
 <br />
 <% if @user && @posts.first %>
