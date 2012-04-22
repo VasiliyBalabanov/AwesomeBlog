@@ -6,9 +6,15 @@ class PostsController < ApplicationController
   def mercury_update
     @post.title = params[:content][:post_title][:value]
     @post.body = params[:content][:post_body][:value]
+    if params[:content][:private_box][:value].include? "Yes"
+      @post.is_private = true
+    end
+    if params[:content][:private_box][:value].include? "No"
+      @post.is_private = false
+    end
     @post.save!
    render text: ""
-  end
+end
   
   def check_auth
     if @user && @user.id != @post.user_id

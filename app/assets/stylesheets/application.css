@@ -21,7 +21,10 @@ input {
 input#remember_me
 {
   width:15px;
-
+}
+input#is_private
+{
+  width:15px;
 }
 h3.add {
   margin-left:35%;

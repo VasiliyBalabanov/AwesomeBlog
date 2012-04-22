@@ -471,6 +471,7 @@ window.Mercury = {
       $('#mercury_iframe').contents().find('#links').hide();
       $('#mercury_iframe').contents().find('#user_nav').hide();
       $('#mercury_iframe').contents().find('#add_comments').hide();
+      $('#mercury_iframe').contents().find('#private_box').show();
     });
     Mercury.on('saved', function() {
       window.location = window.location.href.replace(/\/editor\//i, '/');
@@ -478,9 +479,4 @@ window.Mercury = {
   },
 
   editorUrlRegEx: /([http|https]:\/\/.[^\/]*)\/editor\/?(.*)/i
-
-
-
-
-
 };

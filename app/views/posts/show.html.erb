@@ -10,12 +10,26 @@
 <div id="post_body" class="mercury-region" data-type="editable">
     <%= raw @post.body %>
 </div>
+
+<div id="private_box" style="display:none;" class="mercury-region" data-type="editable">
+<!--
+  <input id="is_private" name="is_private" type="checkbox" value="true" class="mercury-region" data-type="editable" checked="checked"/>Private?
+  <input id="is_private" name="is_private" type="checkbox" value="true" class="mercury-region" data-type="editable" />Private? -->
+
+  <% if @post.is_private? %>
+    TODO: Сделать удобный метод, задающий приватность поста.
+  <% else %>
+    TODO: Сделать удобный метод, задающий приватность поста.
+  <% end %>
+
+</div>
+
 <div id="links">
-<% if @user %>
-  <%= link_to 'Edit', edit_user_post_path(@show_user, @post), id: "edit_link", data: {save_url: mercury_update_user_post_path(@show_user, @post)} %> |
-  <%= link_to 'Destroy', [@show_user, @post], confirm: 'Are you sure?', method: :delete %> |
-<% end %>
-<%= link_to 'Back', user_posts_path(@show_user) %>
+  <% if @user %>
+    <%= link_to 'Edit', edit_user_post_path(@show_user, @post), id: "edit_link", data: {save_url: mercury_update_user_post_path(@show_user, @post)} %> |
+    <%= link_to 'Destroy', [@show_user, @post], confirm: 'Are you sure?', method: :delete %> |
+  <% end %>
+  <%= link_to 'Back', user_posts_path(@show_user) %>
 </div>
 <hr>
 </div>
