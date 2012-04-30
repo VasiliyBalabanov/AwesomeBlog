@@ -1,17 +1,15 @@
-<% content_for :script, javascript_include_tag("mercury") %>
-
 <div class="posts">
 <h1>
-  <span id="post_title" class="mercury-region" data-type="editable">
+  <span id="post_title">
     <%= raw @post.title %>
   </span>
 </h1>
 
-<div id="post_body" class="mercury-region" data-type="editable">
+<div id="post_body">
     <%= raw @post.body %>
 </div>
 
-<div id="private_box" style="display:none;" class="mercury-region" data-type="editable">
+<div id="private_box" style="display:none;">
 <!--
   <input id="is_private" name="is_private" type="checkbox" value="true" class="mercury-region" data-type="editable" checked="checked"/>Private?
   <input id="is_private" name="is_private" type="checkbox" value="true" class="mercury-region" data-type="editable" />Private? -->
@@ -41,7 +39,8 @@
 <% else %>
   <div id="comments_count">
     <h3><%= pluralize(@comments.count, 'Comment') %></h3>
-  </div>    <%= render @comments %>
+  </div>
+    <%= render @comments %>
 
 <% end %> 
 </div> 
@@ -55,11 +54,13 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
+  <div class="field">
+
     <%= f.text_area :body %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-</div><% end %>
+</div>
+<% end %>

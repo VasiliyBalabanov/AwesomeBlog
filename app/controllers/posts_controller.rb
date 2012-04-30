@@ -3,19 +3,6 @@ class PostsController < ApplicationController
   before_filter :check_auth, :only => [:edit, :update]
   before_filter :check_admin_auth, :only => :destroy
   
-  def mercury_update
-    @post.title = params[:content][:post_title][:value]
-    @post.body = params[:content][:post_body][:value]
-    if params[:content][:private_box][:value].include? "Yes"
-      @post.is_private = true
-    end
-    if params[:content][:private_box][:value].include? "No"
-      @post.is_private = false
-    end
-    @post.save!
-   render text: ""
-end
-  
   def check_auth
     if @user && @user.id != @post.user_id
         flash[:notice] = "Sorry, you can't edit this post"
@@ -55,17 +42,14 @@ end
   def new
     @post = Post.new
     @post.user_id = @user.id
-    @post.save!
     
-    redirect_to "/editor" + user_post_path(@show_user, @post)
-    #respond_to do |format|
-    #  format.html # new.html.erb  
-    #end
+    respond_to do |format|
+	format.html  #new.html.erb  
+    end
   end
 
   def edit
     @post = @show_user.posts.find(params[:id])
-    redirect_to "/editor" + user_post_path(@show_user, @post)
   end
  
   def create

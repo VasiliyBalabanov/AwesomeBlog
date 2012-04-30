@@ -6,6 +6,11 @@
   <%= javascript_include_tag "application" %>
   <%= yield :script %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $("#cleditor").cleditor();
+      });
+  </script>
 </head>
 <body>
 <table width=96%>

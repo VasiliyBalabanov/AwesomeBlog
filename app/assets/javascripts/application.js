@@ -7,9 +7,9 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require jquery.cleditor
+//= require jquery.cleditor.min
 //= require_tree .
-// require mercury
-
 
 jQuery.ajaxSetup({ 
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
