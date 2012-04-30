@@ -8,44 +8,36 @@
   <%= csrf_meta_tags %>
   <script type="text/javascript">
       $(document).ready(function() {
-        $("#cleditor").cleditor();
+        $("#cleditor").cleditor({useCSS: true});
       });
   </script>
 </head>
 <body>
-<table width=96%>
-  <tr>
-    
-<td colspan=2><center>
-  <h1>AwesomeBlog v0.4</h1>
-  <h3>In black&white.</h3>
-</center>
-</td>
-</tr>
-<tr>
-  <td valign="top" width=15%>
-    <div id="user_nav">
-       <a href="/">Main Page</a>
-      <br>
-  <% if current_user %>
-  Logged in as <%= current_user.email %><br>
-    <%= link_to "Log out", log_out_path %>
-  <% else %>
-    You still need to <%= link_to "log in", log_in_path %> or <%= link_to "sign up", sign_up_path %> to post something.
-    
-  <% end %>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="/">AwesomeBlog v0.4</a>
+		</div>
+	</div>
 </div>
-</td>
-  <td width=85%>
-
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
-
-
-<%= yield %>
-</td>
-</tr>
-</table>
+<div class="container">
+	<div class="row">
+		<div class="span3" style="text-align:center;">
+			<% if current_user %>
+				Logged in as <%= current_user.email %><br>
+				<%= link_to "Log out", log_out_path %>
+			<% else %>
+				You still need to <%= link_to "log in", log_in_path %> or <%= link_to "sign up", sign_up_path %> to post something.
+    
+			<% end %>
+		</div>
+		<div class="span9" style="text-align:center;">
+			<% flash.each do |name, msg| %>
+				<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+			<%= yield %>
+		</div>
+	</div>
+</div>
 </body>
 </html>

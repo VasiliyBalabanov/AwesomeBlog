@@ -6,17 +6,15 @@
  *= require jquery.cleditor.css
  *= require_tree . 
 */
-textarea {
-  width:80%;
-  height:250px;
-  border:outset #000 2px;
-}
-
 @import url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/cupertino/jquery-ui.css);
 
+textarea {
+  width:80%;
+  height:100px;
+}
+
 input {
-  width:40%;
-  border:outset #000 2px;
+  width:100px;
 }
 
 input#remember_me
@@ -27,20 +25,11 @@ input#is_private
 {
   width:15px;
 }
-h3.add {
-  margin-left:35%;
-}
-
-#user_nav {
-  text-align:center;
-  margin-top:200px;
-}
 
 div.user {
   width:350px;
   height:40px;
   margin-top:2px;
-  border:dotted 2px #000;
   text-align:center;
 }
 p.aligning {
